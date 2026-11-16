@@ -20,7 +20,16 @@ Install or update to the latest pre-built release with a single command:
 curl -fsSL https://raw.githubusercontent.com/tolmachevmaxim/retain/main/install.sh | bash
 ```
 
-*(Automatically downloads the latest release, installs to `/Applications/Retain.app`, and launches the app).*
+*(Automatically downloads the latest release, refreshes LaunchServices registration, installs to `/Applications/Retain.app`, and launches the app).*
+
+> [!TIP]
+> **Optional permission reset:** The installer preserves existing Full Disk Access by default. If sync fails after changing to a differently signed build, you can explicitly reset Retain's TCC entry by running `curl -fsSL https://raw.githubusercontent.com/tolmachevmaxim/retain/main/install.sh | RETAIN_RESET_TCC=1 bash`. This removes the existing grant; macOS will require you to grant Full Disk Access again in System Settings.
+>
+> **Upgrading from an earlier / official Retain build?**
+> macOS binds **Full Disk Access** permissions cryptographically to the app signature. If you previously gave Full Disk Access to an earlier or official build and web sync reports cookie permission errors:
+> 1. Open **System Settings → Privacy & Security → Full Disk Access** (Системные настройки → Конфиденциальность и безопасность → Полный доступ к диску).
+> 2. Select **Retain**, click `-` to remove the old entry, then click `+` and select `/Applications/Retain.app`.
+> 3. Restart Retain and click **Connect**.
 
 Or download the zip directly: **[Retain v0.1.11 (macOS Apple Silicon)](https://github.com/tolmachevmaxim/retain/releases/latest)**.
 
